@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import StarRatings from 'react-star-ratings';
-import star from './star.svg';
+
+import RatingsTallyDisplay from './RatingsTallyDisplay';
 import './Demo.css';
 
 class Demo extends Component {
@@ -11,7 +12,6 @@ class Demo extends Component {
         };
         this.updateRatings = this.updateRatings.bind(this);
         this.resetRatings = this.resetRatings.bind(this);
-        this.displayRatingsTally = this.displayRatingsTally.bind(this);
     }
     updateRatings(newVote) {
         const ratings = this.state.ratings;
@@ -22,21 +22,6 @@ class Demo extends Component {
         const ratings = Array(this.state.ratings.length).fill(0);
         this.setState({ ratings });
     }
-    displayRatingsTally() { // TODO: consider making this its own component
-        // also consider just defining this in the "render" method below
-        return this.state.ratings.map(
-            (ratingTally, index) => <div className='tally-row'>
-                <div style={{ textAlign: 'left' }}>
-                    {index === 0 ? "Zero Stars" : [...Array(index)].map(
-                        (e, i) => <img src={star} className='scorecount-star' key={i} />
-                    )}
-                </div>
-                <div style={{ textAlign: 'right' }}>
-                    {ratingTally}
-                </div>
-            </div>
-        ); // TODO: CLEAN THIS UP
-    }
     render() {
         return <div className='Demo'>
             <StarRatings
@@ -45,7 +30,7 @@ class Demo extends Component {
                 name='rating'
             />
             <div>
-                {this.displayRatingsTally()}
+                <RatingsTallyDisplay ratings={this.state.ratings} />
             </div>
             <button onClick={this.resetRatings}>
                 Reset Values
