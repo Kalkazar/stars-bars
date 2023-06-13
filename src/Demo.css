@@ -2,15 +2,14 @@
     text-align: center;
 }
 
-.Demo-logo {
-    height: 40vmin;
-    pointer-events: none;
+.scorecount-star {
+    width: 25px;
+    height: 25px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .Demo-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.tally-row {
+    display: flex;
+    justify-content: space-between;
 }
 
 .Demo-header {
@@ -22,8 +21,4 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
-}
-
-.Demo-link {
-    color: #61dafb;
 }
