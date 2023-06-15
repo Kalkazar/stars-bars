@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import star from './star.svg';
+import {ReactComponent as Star} from './star.svg';
 
-class RatingsTallyDisplay extends Component { // consider rnemaing
+class RatingsTallyDisplay extends Component { // consider renaming
     constructor(props) {
         super(props);
         this.state = {};
@@ -11,7 +11,7 @@ class RatingsTallyDisplay extends Component { // consider rnemaing
             (ratingTally, index) => <div className='tally-row'>
                 <div style={{ textAlign: 'left' }}>
                     {index === 0 ? "Zero Stars" : [...Array(index)].map(
-                        (e, i) => <img src={star} className='scorecount-star' id={i} />
+                        (e, i) => <Star id={i} />
                     )}
                 </div>
                 <div style={{ textAlign: 'right' }}>

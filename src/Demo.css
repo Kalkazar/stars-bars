@@ -2,11 +2,6 @@
     text-align: center;
 }
 
-.scorecount-star {
-    width: 25px;
-    height: 25px;
-}
-
 .tally-row {
     display: flex;
     justify-content: space-between;
