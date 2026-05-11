@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Ratings from 'react-ratings-declarative';
 
 import RatingsTallyDisplay from './RatingsTallyDisplay';
+import RatingsInput from './RatingsInput';
 import xSvgData from './x-symbol-svg-data.json'; // consider: "crossOutSymbolSvgData"
 import './Demo.css'; // consider just making this part of "index.css"
 
@@ -28,14 +29,18 @@ class Demo extends Component {
         return <Ratings changeRating={this.updateRatings}>
             {this.state.ratings.map(
                 (ratingTally, index) => (
-                    index === 0 ? <Ratings.Widget {...xSvgData}/> : <Ratings.Widget/>
+                    <Ratings.Widget {...(index === 0 ? xSvgData : {})}/>
                 )
             )}
-        </Ratings>; // see if you can put the ternary INSIDE of "Ratings.Widget"
+        </Ratings>;
     }
     render() {
         return <div className='Demo'>
             {this.displayRatingsInput()}
+            {/* <RatingsInput
+                ratings={this.state.ratings}
+                updateRatings={this.updateRatings} // TODO: MAKE SURE THIS WORKS!!
+            /> */}
             <div>
                 <RatingsTallyDisplay ratings={this.state.ratings} />
             </div>

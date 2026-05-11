@@ -22,4 +22,6 @@ class RatingsTallyDisplay extends Component { // consider renaming
     }
 } // TODO: CLEAN THIS UP (need to fix the "key" thing that React's whining about)
 
+// TODO: consider adding "PropTypes" and whatnot
+
 export default RatingsTallyDisplay;
