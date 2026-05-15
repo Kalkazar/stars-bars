@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import Ratings from 'react-ratings-declarative';
-// import { connect } from 'react-redux';
-import xOutSymbolSvgData from './x-symbol-svg-data.json'; // was "xSvgData"
-// consider renaming: "crossOutSymbolSvgData", "xOutSymbolSvgData", "xOutSvgData" etc.
+import crossOutSymbolSvg from './x-symbol-svg-data.json';
 
 class RatingsInput extends Component {
     constructor(props) {
@@ -11,38 +9,19 @@ class RatingsInput extends Component {
         this.state = {};
     }
     render() {
-        return <Ratings changeRating={this.updateRatings}>
+        return <Ratings changeRating={this.props.updateRatings}>
             {this.props.ratings.map(
                 (ratingTally, index) => (
-                    <Ratings.Widget {...(index === 0 ? xOutSymbolSvgData : {})}/>
+                    <Ratings.Widget {...(index === 0 ? crossOutSymbolSvg : {})}/>
                 )
             )}
         </Ratings>;
-    } // TODO: ADD "ratings" AND "updateRatings" TO PROPS!!!
+    }
 }
 
-// RatingsInput.propTypes = {
-//     ratings: PropTypes.array.isRequired,
-//     updateRatings: PropTypes.func.isRequired
-// }
+RatingsInput.propTypes = {
+    ratings: PropTypes.array.isRequired,
+    updateRatings: PropTypes.func.isRequired
+}
 
-// // do I actually need this part? decide later
-// const mapStateToProps = (state) => ({
-//     // genre: state.config.selectedGenre,
-//     // artistCount: state.config.selectedArtistCount,
-//     // songCount: state.config.selectedSongCount,
-//     // artists: state.play.artists,
-//     // selectedArtist: state.play.selectedArtist,
-//     // selectedSongs: state.play.selectedSongs,
-//     // selectArtistGuess: state.play.selectArtistGuess,
-//     // selectArtistCheck: state.play.selectArtistCheck
-// })
-
-// const mapDispatchToProps = (dispatch) => ({
-//     // loadArtistsAndSongs: (config) => dispatch(loadArtistsAndSongs(config)),
-//     // selectArtistGuess: artistGuess => dispatch(selectArtistGuess(artistGuess)),
-//     // // selectArtistCheck: artistCheck => dispatch(selectArtistGuess(artistCheck))
-// })
-
-// export default connect(mapStateToProps, mapDispatchToProps)(RatingsInput);
 export default RatingsInput;

@@ -17,7 +17,8 @@ class Demo extends Component {
         this.displayRatingsInput = this.displayRatingsInput.bind(this)
     }
     updateRatings(newVote) {
-        const ratings = this.state.ratings;
+        // const ratings = this.state.ratings;
+        const ratings = [...this.state.ratings]; // to prevent changing the state too much
         ratings[newVote - 1]++;
         this.setState({ ratings });
     }
@@ -36,11 +37,10 @@ class Demo extends Component {
     }
     render() {
         return <div className='Demo'>
-            {this.displayRatingsInput()}
-            {/* <RatingsInput
+            <RatingsInput
                 ratings={this.state.ratings}
-                updateRatings={this.updateRatings} // TODO: MAKE SURE THIS WORKS!!
-            /> */}
+                updateRatings={this.updateRatings}
+            />
             <div>
                 <RatingsTallyDisplay ratings={this.state.ratings} />
             </div>
