@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Ratings from 'react-ratings-declarative';
 import crossOutSymbolSvg from './x-symbol-svg-data.json';
 
-class RatingsInput extends Component {
+class RatingsInput extends Component { // consider renaming: "StarRatingsInput"
     constructor(props) {
         super(props);
         this.state = {};
