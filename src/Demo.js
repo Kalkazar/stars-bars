@@ -45,13 +45,13 @@ class Demo extends Component {
                 ratings={this.state.ratings}
                 updateRatings={this.updateRatings}
             />
+            <StarsBars/>
             <div>
                 <RatingsTallyDisplay ratings={this.state.ratings} />
             </div>
             <button onClick={this.resetRatings}>
                 Reset Values
             </button>
-            <StarsBars/>
         </div>;
     }
 }
