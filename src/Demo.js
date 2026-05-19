@@ -11,28 +11,26 @@ class Demo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // ratings: [0, 0, 0, 0, 0, 0], // TODO: consider defining some other way
-            ratings: [1, 1, 1, 1, 1, 1], // TEMPORARY; remove later
+            // starRatingsData: [0, 0, 0, 0, 0, 0], // TODO: consider defining some other way
+            starRatingsData: [1, 1, 1, 1, 1, 1], // TEMPORARY; remove later
         };
-        // also consider renaming, if you wind up using this "Ratings" component
-        // maybe "starRatings". Or "starRatingsData"
         this.updateRatings = this.updateRatings.bind(this);
         this.resetRatings = this.resetRatings.bind(this);
         this.displayRatingsInput = this.displayRatingsInput.bind(this)
     }
     updateRatings(newVote) {
-        const ratings = [...this.state.ratings];
-        ratings[newVote - 1]++;
-        this.setState({ ratings });
+        const starRatingsData = [...this.state.starRatingsData];
+        starRatingsData[newVote - 1]++;
+        this.setState({ starRatingsData });
     }
     resetRatings() {
-        // const ratings = Array(this.state.ratings.length).fill(0);
-        const ratings = Array(this.state.ratings.length).fill(1); // TEMPORARY; remove later
-        this.setState({ ratings });
+        // const starRatingsData = Array(this.state.ratings.length).fill(0);
+        const starRatingsData = Array(this.state.starRatingsData.length).fill(1); // TEMPORARY; remove later
+        this.setState({ starRatingsData });
     }
     displayRatingsInput() {
         return <Ratings changeRating={this.updateRatings}>
-            {this.state.ratings.map(
+            {this.state.starRatingsData.map(
                 (ratingTally, index) => (
                     <Ratings.Widget {...(index === 0 ? xSvgData : {})}/>
                 )
@@ -42,12 +40,14 @@ class Demo extends Component {
     render() {
         return <div className='Demo'>
             <RatingsInput
-                ratings={this.state.ratings}
+                ratings={this.state.starRatingsData}
                 updateRatings={this.updateRatings}
             />
-            <StarsBars/>
+            <StarsBars
+                starRatingsData={this.state.starRatingsData}
+            />
             <div>
-                <RatingsTallyDisplay ratings={this.state.ratings} />
+                <RatingsTallyDisplay ratings={this.state.starRatingsData} />
             </div>
             <button onClick={this.resetRatings}>
                 Reset Values
